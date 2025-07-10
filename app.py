@@ -10,10 +10,10 @@ from utils import (
 
 app = Flask(__name__)
 
-# ✅ App Configuration
+# App Configuration
 app.secret_key = 'your-secret-key'
 
-# ✅ CORS Setup
+# CORS Setup
 CORS(app,
      resources={r"/api/*": {"origins": "*"}},
      supports_credentials=True,
@@ -21,11 +21,11 @@ CORS(app,
      allow_headers=["Authorization", "Content-Type"],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
-# ✅ Initialize Tables
+# Initialize Tables
 DB_NAME = "expense.db"
 init_db(DB_NAME)
 
-# ✅ Optional: Only if you want users table for future
+
 def init_users_table():
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
@@ -39,17 +39,11 @@ def init_users_table():
     conn.commit()
     conn.close()
 
-# Call only if needed
-# init_users_table()
-
-# ✅ Home Route
+# Home Route
 @app.route("/")
 def home():
-    return "✅ Expensely API is Running Without Login!"
+    return "Expensely API is Running Without Login!"
 
-# ----------------------------
-# 🚫 All Routes Below Are Public Now
-# ----------------------------
 
 @app.route("/api/expenses", methods=["GET"])
 def get_expenses():
@@ -86,6 +80,6 @@ def summary():
         "top_category": top_category
     })
 
-# ✅ Run the app
+# Run the app
 if __name__ == "__main__":
     app.run(debug=True)

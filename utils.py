@@ -2,7 +2,7 @@ import sqlite3
 import csv
 from datetime import datetime
 
-# ✅ Initialize the database and create the expenses table
+# Initialize the database and create the expenses table
 def init_db(db_name):
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
@@ -18,7 +18,7 @@ def init_db(db_name):
     conn.commit()
     conn.close()
 
-# ✅ Fetch all expenses
+# Fetch all expenses
 def get_all_expenses(db_name):
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
@@ -36,7 +36,7 @@ def get_all_expenses(db_name):
         for row in rows
     ]
 
-# ✅ Add a new expense
+# Add a new expense
 def add_expense(db_name, data):
     try:
         title = data.get("title")
@@ -44,12 +44,12 @@ def add_expense(db_name, data):
         category = data.get("category")
         date = data.get("date")
 
-        # 🔍 Check for missing or empty values
+        # Check for missing or empty values
         if not title or not category or not date or amount is None:
-            print("❌ Missing required fields:", data)
+            print("Missing required fields:", data)
             return False
 
-        # 🔢 Convert amount safely
+        # Convert amount safely
         amount = float(amount)
 
         conn = sqlite3.connect(db_name)
@@ -62,10 +62,10 @@ def add_expense(db_name, data):
         conn.close()
         return True
     except Exception as e:
-        print("❌ Error adding expense:", e)
+        print("Error adding expense:", e)
         return False
 
-# ✅ Delete a specific expense
+# Delete a specific expense
 def delete_expense(db_name, expense_id):
     try:
         conn = sqlite3.connect(db_name)
@@ -75,10 +75,10 @@ def delete_expense(db_name, expense_id):
         conn.close()
         return True
     except Exception as e:
-        print("❌ Error deleting expense:", e)
+        print("Error deleting expense:", e)
         return False
 
-# ✅ Edit a specific expense
+# Edit a specific expense
 def edit_expense(db_name, expense_id, data):
     try:
         conn = sqlite3.connect(db_name)
@@ -99,10 +99,10 @@ def edit_expense(db_name, expense_id, data):
         conn.close()
         return True
     except Exception as e:
-        print("❌ Error editing expense:", e)
+        print("Error editing expense:", e)
         return False
 
-# ✅ Export expenses to CSV
+# Export expenses to CSV
 def export_to_csv(db_name):
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
@@ -117,7 +117,7 @@ def export_to_csv(db_name):
         writer.writerows(rows)
     return filename
 
-# ✅ Calculate summary (total and top category)
+# Calculate summary (total and top category)
 def get_summary(db_name):
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
