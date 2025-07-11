@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 from datetime import timedelta
 import sqlite3
+import os
 
 from utils import (
     init_db, get_all_expenses, add_expense,
@@ -82,4 +83,5 @@ def summary():
 
 # Run the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
