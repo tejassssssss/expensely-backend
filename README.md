@@ -9,7 +9,7 @@ This is the backend for **Expensely**, a full-stack expense tracker web applicat
 - Flask (Python)
 - SQLite
 - Flask-CORS
-- Render (for deployment)
+- **Railway** (for deployment)
 
 ---
 
@@ -28,12 +28,12 @@ This is the backend for **Expensely**, a full-stack expense tracker web applicat
 | POST   | `/api/add`              | Add a new expense        |
 | DELETE | `/api/delete/<id>`      | Delete an expense        |
 | PUT    | `/api/edit/<id>`        | Edit an expense          |
-| GET    | `/api/export`           | Download CSV             |
+| GET    | `/api/export`           | Download expenses as CSV |
 
 ---
 
 ## 🔗 Live API
 
-> https://expensely-backend.onrender.com
+> https://web-production-90988.up.railway.app
 
 ---
